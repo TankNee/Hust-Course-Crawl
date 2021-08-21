@@ -190,7 +190,7 @@ const parseCourses = (courses, dateString) => {
         })
         .filter((c) => c);
 };
-const WEEK_MAP = generateMapBetweenWeekAndDate("2020-08-31", 19);
+const WEEK_MAP = generateMapBetweenWeekAndDate("2021-09-06", 19);
 /**
  * 生成ICS需要的数据
  * @param {string} cookie 用户cookie
@@ -207,6 +207,6 @@ const generateICSEvents = async (cookie) => {
         console.log(error);
         return;
     }
-    // fs.writeFileSync("courses.ics", value);
+    fs.writeFileSync("courses.ics", value);
 };
-// generateICSEvents();
+generateICSEvents(``);
