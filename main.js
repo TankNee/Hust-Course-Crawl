@@ -176,12 +176,13 @@ const parseCourses = (courses, dateString) => {
             const { startTime, endTime } = timeTable[parseInt(CourseIndex) - 1];
             const [sh, sm] = startTime;
             const [eh, em] = endTime;
-
+            const season = new Date().getMonth() >= 0 && new Date().getMonth() <= 5 ? '春季' : '秋季'
             return {
                 start: [date.getFullYear(), date.getMonth() + 1, date.getDate(), sh, sm],
                 end: [date.getFullYear(), date.getMonth() + 1, date.getDate(), eh, em],
                 title: courseName,
                 location: classroom,
+                calName: `${new Date().getFullYear()} ${season}学期课程表`,
                 organizer: {
                     name: teacher,
                 },
@@ -209,4 +210,5 @@ const generateICSEvents = async (cookie) => {
     }
     fs.writeFileSync("courses.ics", value);
 };
+// 此处填入你的 cookie
 generateICSEvents(``);
